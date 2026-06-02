@@ -94,7 +94,7 @@ Como os dados são armazenados localmente no seu dispositivo, o exercício desse
 
 ## 9. Dados de crianças e adolescentes
 
-O Tríkos não é direcionado a menores de 18 anos. Não coletamos intencionalmente dados de menores. Se você acredita que um menor forneceu dados ao app, entre em contato pelo e-mail privacidade@trikros.app.
+O Tríkos não é direcionado a menores de 18 anos. Não coletamos intencionalmente dados de menores. Se você acredita que um menor forneceu dados ao app, entre em contato pelo e-mail alarconreis@gmail.com.
 
 ---
 
@@ -108,7 +108,7 @@ Esta política pode ser atualizada periodicamente. Quando houver alterações re
 
 Se tiver dúvidas sobre esta Política de Privacidade ou sobre o tratamento dos seus dados, entre em contato:
 
-**E-mail:** privacidade@trikros.app
+**E-mail:** alarconreis@gmail.com
 
 ---
 
