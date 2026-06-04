@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TricoHub — Acompanhamento capilar</title>
+  <meta name="description" content="Registre sua queda, organize sua rotina e acompanhe sua saúde capilar. Seus dados ficam no seu dispositivo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #0F6E56;
+      --green-dark: #085041;
+      --green-light: #E1F5EE;
+      --green-mid: #5DCAA5;
+      --text: #2C2C2A;
+      --text-muted: #888780;
+      --border: #D3D1C7;
+      --bg: #F8F7F2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(248, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--green);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+
+    .nav-logo-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover { color: var(--green); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 40px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(15, 110, 86, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      border: 0.5px solid rgba(15, 110, 86, 0.2);
+    }
+
+    .hero-badge span { font-size: 11px; opacity: 0.7; }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      color: var(--text);
+      margin-bottom: 24px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: var(--green-light);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 14px;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 100px;
+      border: 0.5px solid var(--border);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      color: var(--green);
+      border-color: var(--green-mid);
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* FEATURES */
+    .section {
+      padding: 96px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 56px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--green-mid);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--green-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .feature-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* PRIVACY */
+    .privacy-section {
+      background: var(--green);
+      border-radius: 24px;
+      padding: 64px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin: 0 40px 96px;
+      max-width: 1020px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .privacy-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      color: var(--green-light);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .privacy-sub {
+      font-size: 16px;
+      color: rgba(225, 245, 238, 0.7);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .privacy-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .privacy-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .privacy-check {
+      width: 22px;
+      height: 22px;
+      background: rgba(225, 245, 238, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      color: var(--green-mid);
+      margin-top: 1px;
+    }
+
+    .privacy-item-text {
+      font-size: 15px;
+      color: rgba(225, 245, 238, 0.85);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .privacy-item-text strong {
+      color: var(--green-light);
+      font-weight: 500;
+    }
+
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      padding: 32px 28px;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .step:last-child { border-right: none; }
+
+    .step-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 48px;
+      color: var(--green-light);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* CTA FINAL */
+    .cta-section {
+      text-align: center;
+      padding: 96px 40px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .cta-section h2 { margin-bottom: 12px; }
+
+    .cta-section p {
+      font-size: 17px;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 36px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--green); }
+
+    .footer-links { display: flex; gap: 24px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 100px 20px 60px; }
+      .section { padding: 64px 20px; }
+      .privacy-section {
+        grid-template-columns: 1fr;
+        padding: 40px 28px;
+        margin: 0 20px 64px;
+      }
+      .step { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .step:last-child { border-bottom: none; }
+      footer { padding: 24px 20px; }
+      .footer-links { flex-direction: column; gap: 12px; }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > * {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-badge { animation-delay: 0.1s; }
+    h1 { animation-delay: 0.2s; }
+    .hero-sub { animation-delay: 0.3s; }
+    .hero-cta { animation-delay: 0.4s; }
+    .hero-note { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🌿</div>
+      <span class="nav-logo-name">TricoHub</span>
+    </a>
+    <a href="https://tricohub.com.br/privacy-policy" class="nav-link">Privacidade</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge">
+        🌱 <span>Disponível para Android</span>
+      </div>
+      <h1>Cuide do seu cabelo com <em>dados reais</em></h1>
+      <p class="hero-sub">
+        Registre a queda, organize sua rotina e acompanhe sua evolução capilar. Simples, clínico e privado.
+      </p>
+      <div class="hero-cta">
+        <a href="https://play.google.com/store" class="btn-primary">
+          ↓ Baixar para Android
+        </a>
+        <a href="#funcionalidades" class="btn-ghost">
+          Ver funcionalidades
+        </a>
+      </div>
+      <p class="hero-note">Gratuito · Seus dados ficam no seu dispositivo</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="funcionalidades">
+    <p class="section-label">Funcionalidades</p>
+    <h2>Tudo que você precisa para acompanhar sua saúde capilar</h2>
+    <p class="section-sub">Do registro diário ao relatório para o seu profissional — tudo em um só lugar.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <p class="feature-title">Contagem de queda diária</p>
+        <p class="feature-desc">Registre os fios após o banho ou escovação. Veja tendências em 7, 14 ou 30 dias e identifique padrões.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧴</div>
+        <p class="feature-title">Rotina capilar organizada</p>
+        <p class="feature-desc">Cadastre produtos, defina frequência e horário de uso. Marque o que fez no dia e acompanhe sua adesão.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <p class="feature-title">Relatório em PDF</p>
+        <p class="feature-desc">Gere um relatório completo com histórico, produtos e correlações. Compartilhe com seu profissional de saúde.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✍️</div>
+        <p class="feature-title">Anotações diárias</p>
+        <p class="feature-desc">Registre observações livres — estresse, mudanças hormonais, novos produtos. Contexto que faz diferença.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <p class="feature-title">Alertas personalizados</p>
+        <p class="feature-desc">Lembretes nos horários que você escolhe, com o tom que prefere — gentil, direto ou motivador.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <p class="feature-title">PIN e biometria</p>
+        <p class="feature-desc">Proteja seus dados com PIN de 4 dígitos ou biometria. Bloqueio automático após inatividade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <div class="privacy-section">
+    <div>
+      <p class="privacy-title">Seus dados são<br><em style="font-style:italic; color: #9FE1CB;">exclusivamente seus</em></p>
+      <p class="privacy-sub">No TricoHub, nenhuma informação sua sai do seu dispositivo. Sem servidores, sem coleta, sem anúncios.</p>
+    </div>
+    <div class="privacy-items">
+      <div class="privacy-item">
+        <div class="privacy-check">✓</div>
+        <p class="privacy-item-text"><strong>100% offline</strong> — funciona sem internet</p>
+      </div>
+      <div class="privacy-item">
+        <div class="privacy-check">✓</div>
+        <p class="privacy-item-text"><strong>Sem servidores externos</strong> — seus dados nunca saem do aparelho</p>
+      </div>
+      <div class="privacy-item">
+        <div class="privacy-check">✓</div>
+        <p class="privacy-item-text"><strong>Sem anúncios</strong> — nenhum dado vendido a terceiros</p>
+      </div>
+      <div class="privacy-item">
+        <div class="privacy-check">✓</div>
+        <p class="privacy-item-text"><strong>Você controla tudo</strong> — exporte ou apague quando quiser</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <p class="section-label">Como funciona</p>
+    <h2>Simples de usar, poderoso na clínica</h2>
+    <p class="section-sub">Em poucos passos você começa a ter dados reais sobre sua saúde capilar.</p>
+
+    <div class="steps">
+      <div class="step">
+        <p class="step-num">01</p>
+        <p class="step-title">Configure sua rotina</p>
+        <p class="step-desc">Adicione seus produtos capilares com frequência e horário de uso recomendados.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">02</p>
+        <p class="step-title">Registre diariamente</p>
+        <p class="step-desc">Conte os fios após o banho e marque o que usou. Leva menos de 1 minuto.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">03</p>
+        <p class="step-title">Acompanhe sua evolução</p>
+        <p class="step-desc">Veja gráficos, tendências e correlações entre sua rotina e a queda.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">04</p>
+        <p class="step-title">Compartilhe com seu profissional</p>
+        <p class="step-desc">Exporte um relatório em PDF completo para levar na sua próxima consulta.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <h2>Comece hoje, é gratuito</h2>
+    <p>Baixe o TricoHub e tenha dados reais sobre sua saúde capilar.</p>
+    <a href="https://play.google.com/store" class="btn-primary">
+      ↓ Baixar para Android
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 TricoHub</span>
+    <div class="footer-links">
+      <a href="https://tricohub.com.br/privacy-policy">Política de privacidade</a>
+      <a href="https://tricohub.com.br/terms">Termos de uso</a>
+      <a href="mailto:privacidade@tricohub.com.br">Contato</a>
+    </div>
+  </footer>
+
+</body>
+</html>
