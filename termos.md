@@ -1,4 +1,4 @@
-# Termos de Uso — Tríkos
+# Termos de Uso — TricoHub
 
 **Última atualização:** junho de 2026
 
@@ -6,30 +6,30 @@
 
 ## 1. Aceitação dos Termos
 
-Ao baixar, instalar ou usar o aplicativo Tríkos, você concorda com estes Termos de Uso. Se não concordar com qualquer parte destes termos, não utilize o aplicativo.
+Ao baixar, instalar ou usar o aplicativo TricoHub, você concorda com estes Termos de Uso. Se não concordar com qualquer parte destes termos, não utilize o aplicativo.
 
 ---
 
 ## 2. Descrição do Serviço
 
-O Tríkos é um aplicativo móvel de acompanhamento capilar que permite:
+O TricoHub é um aplicativo móvel de diário capilar pessoal que permite:
 
-- Registrar e monitorar a queda diária de cabelos
-- Organizar a rotina capilar com produtos e tratamentos
+- Registrar a queda diária de cabelos
+- Organizar a rotina capilar com produtos e itens de cuidado
 - Gerar relatórios exportáveis em PDF
 - Receber alertas e lembretes personalizados
-- Fazer anotações diárias sobre o tratamento
+- Fazer anotações diárias pessoais
 
-O Tríkos é uma ferramenta de acompanhamento pessoal e **não substitui consulta médica, dermatológica ou tricológica profissional**.
+O TricoHub é uma ferramenta de registro e acompanhamento pessoal e **não substitui qualquer tipo de consulta ou orientação profissional**.
 
 ---
 
 ## 3. Uso Permitido
 
-Você pode usar o Tríkos para:
+Você pode usar o TricoHub para:
 
-- Acompanhar sua própria saúde capilar
-- Compartilhar relatórios com profissionais de saúde de sua escolha
+- Registrar e acompanhar sua rotina de cuidados capilares
+- Compartilhar relatórios com quem desejar
 - Exportar seus próprios dados pessoais
 
 ---
@@ -54,17 +54,17 @@ Você pode usar o Tríkos para:
 
 **5.2** Você é responsável por todas as atividades realizadas com sua conta.
 
-**5.3** Notifique-nos imediatamente em caso de uso não autorizado em privacidade@trikros.app.
+**5.3** Notifique-nos imediatamente em caso de uso não autorizado em privacidade@tricohub.com.br.
 
-**5.4** O Tríkos não se responsabiliza por perdas decorrentes de falha na guarda das suas credenciais.
+**5.4** O TricoHub não se responsabiliza por perdas decorrentes de falha na guarda das suas credenciais.
 
 ---
 
 ## 6. Dados e Privacidade
 
-**6.1** O tratamento dos seus dados pessoais é regido pela nossa Política de Privacidade, disponível em https://alarconreis.github.io/privacy-policy.
+**6.1** O tratamento dos seus dados pessoais é regido pela nossa Política de Privacidade, disponível em https://tricohub.com.br/privacidade.
 
-**6.2** Todos os dados são armazenados localmente no seu dispositivo. O Tríkos não acessa, transmite ou armazena seus dados em servidores externos na versão atual.
+**6.2** Todos os dados são armazenados localmente no seu dispositivo. O TricoHub não acessa, transmite ou armazena seus dados em servidores externos na versão atual.
 
 **6.3** Você é o único titular dos dados inseridos no aplicativo e pode excluí-los a qualquer momento em Configurações → Zerar todos os dados.
 
@@ -72,29 +72,27 @@ Você pode usar o Tríkos para:
 
 ## 7. Propriedade Intelectual
 
-**7.1** O Tríkos, incluindo seu código, design, marca, logotipo e conteúdo, é protegido por direitos autorais e outras leis de propriedade intelectual.
+**7.1** O TricoHub, incluindo seu código, design, marca, logotipo e conteúdo, é protegido por direitos autorais e outras leis de propriedade intelectual.
 
-**7.2** Nenhuma parte destes Termos concede a você direito sobre a marca ou propriedade intelectual do Tríkos.
+**7.2** Nenhuma parte destes Termos concede a você direito sobre a marca ou propriedade intelectual do TricoHub.
 
-**7.3** O conteúdo educativo disponível no aplicativo é fornecido apenas para fins informativos e não pode ser reproduzido sem autorização.
+**7.3** O conteúdo disponível no aplicativo é fornecido apenas para fins informativos e não pode ser reproduzido sem autorização.
 
 ---
 
-## 8. Isenção de Responsabilidade Médica
+## 8. Isenção de Responsabilidade
 
-**8.1** O Tríkos é uma ferramenta de acompanhamento pessoal e **não é um dispositivo médico**.
+**8.1** O TricoHub é uma ferramenta de registro pessoal e **não é um dispositivo médico ou de saúde**.
 
-**8.2** As informações e relatórios gerados pelo aplicativo são baseados exclusivamente nos dados inseridos pela usuária e não constituem diagnóstico, prescrição ou tratamento médico.
+**8.2** As informações e relatórios gerados pelo aplicativo são baseados exclusivamente nos dados inseridos por você e não constituem qualquer tipo de diagnóstico, prescrição ou orientação profissional.
 
-**8.3** Sempre consulte um profissional de saúde qualificado (dermatologista, tricologista) para diagnóstico e tratamento de condições capilares.
-
-**8.4** O Tríkos não se responsabiliza por decisões de saúde tomadas com base nas informações do aplicativo.
+**8.3** O TricoHub não se responsabiliza por decisões tomadas com base nas informações do aplicativo.
 
 ---
 
 ## 9. Disponibilidade do Serviço
 
-**9.1** O Tríkos funciona predominantemente offline. A disponibilidade de funcionalidades que requerem internet (como autenticação Google) depende de sua conexão.
+**9.1** O TricoHub funciona predominantemente offline. A disponibilidade de funcionalidades que requerem internet depende de sua conexão.
 
 **9.2** Nos reservamos o direito de modificar, suspender ou encerrar o aplicativo a qualquer momento, com aviso prévio razoável quando possível.
 
@@ -114,7 +112,7 @@ Você pode usar o Tríkos para:
 
 ## 11. Limitação de Responsabilidade
 
-Na máxima extensão permitida pela lei brasileira, o Tríkos não será responsável por:
+Na máxima extensão permitida pela lei brasileira, o TricoHub não será responsável por:
 
 - Perda de dados decorrente de falha do dispositivo ou desinstalação do aplicativo
 - Danos indiretos, incidentais ou consequenciais
@@ -135,7 +133,7 @@ Na máxima extensão permitida pela lei brasileira, o Tríkos não será respons
 
 Para dúvidas, sugestões ou reclamações relacionadas a estes Termos:
 
-**E-mail:** alarconreis@gmail.com
+**E-mail:** privacidade@tricohub.com.br
 
 ---
 
@@ -145,7 +143,7 @@ Para dúvidas, sugestões ou reclamações relacionadas a estes Termos:
 
 **14.2** A falha em exercer qualquer direito previsto nestes Termos não constitui renúncia a esse direito.
 
-**14.3** Estes Termos constituem o acordo completo entre você e o Tríkos em relação ao uso do aplicativo.
+**14.3** Estes Termos constituem o acordo completo entre você e o TricoHub em relação ao uso do aplicativo.
 
 ---
 
