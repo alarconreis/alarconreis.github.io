@@ -133,7 +133,7 @@ Na máxima extensão permitida pela lei brasileira, o TricoHub não será respon
 
 Para dúvidas, sugestões ou reclamações relacionadas a estes Termos:
 
-**E-mail:** privacidade@tricohub.com.br
+**E-mail:** contato@tricohub.com.br
 
 ---
 
