@@ -1,10 +1,12 @@
+cd ~/projetos/trikros
+cat > docs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TricoHub — Acompanhamento capilar</title>
-  <meta name="description" content="Registre sua queda, organize sua rotina e acompanhe sua saúde capilar. Seus dados ficam no seu dispositivo." />
+  <title>TricoHub — Portal para Tricologistas</title>
+  <meta name="description" content="Plataforma completa para tricologistas. Gerencie pacientes, agenda, planos de tratamento e acompanhe a evolução capilar. Portal web + app para pacientes." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -23,426 +25,184 @@
     }
 
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 20px 40px;
       background: rgba(248, 247, 242, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 0.5px solid var(--border);
     }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav-logo-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--green);
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-    }
-
-    .nav-logo-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
-      color: var(--text);
-      letter-spacing: -0.3px;
-    }
-
-    .nav-link {
-      font-size: 14px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-icon { width: 32px; height: 32px; background: var(--green); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; }
+    .nav-logo-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .nav-link:hover { color: var(--green); }
+    .nav-cta { font-size: 14px; font-weight: 500; color: var(--green-light); background: var(--green); padding: 8px 20px; border-radius: 100px; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--green-dark); }
 
     /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 120px 40px 80px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 120px 40px 80px; text-align: center; position: relative; overflow: hidden;
     }
-
     .hero::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
+      content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px;
       background: radial-gradient(circle, rgba(15, 110, 86, 0.08) 0%, transparent 70%);
       pointer-events: none;
     }
-
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--green-light);
-      color: var(--green-dark);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-      border: 0.5px solid rgba(15, 110, 86, 0.2);
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--green-light); color: var(--green-dark);
+      font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 28px; border: 0.5px solid rgba(15, 110, 86, 0.2);
     }
-
-    .hero-badge span { font-size: 11px; opacity: 0.7; }
-
     h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 1.05;
-      letter-spacing: -1px;
-      color: var(--text);
-      margin-bottom: 24px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: clamp(40px, 6vw, 72px); line-height: 1.05;
+      letter-spacing: -1px; color: var(--text); margin-bottom: 24px;
+      max-width: 760px; margin-left: auto; margin-right: auto;
     }
-
-    h1 em {
-      font-style: italic;
-      color: var(--green);
-    }
-
+    h1 em { font-style: italic; color: var(--green); }
     .hero-sub {
-      font-size: 18px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 480px;
-      margin: 0 auto 40px;
-      font-weight: 300;
+      font-size: 18px; color: var(--text-muted); line-height: 1.6;
+      max-width: 520px; margin: 0 auto 40px; font-weight: 300;
     }
-
-    .hero-cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
+    .hero-cta { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--green);
-      color: var(--green-light);
-      font-size: 15px;
-      font-weight: 500;
-      padding: 14px 28px;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: var(--green-light);
+      font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 100px;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
     }
-
-    .btn-primary:hover {
-      background: var(--green-dark);
-      transform: translateY(-1px);
-    }
-
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
     .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-muted);
-      font-size: 14px;
-      text-decoration: none;
-      padding: 14px 20px;
-      border-radius: 100px;
-      border: 0.5px solid var(--border);
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--text-muted); font-size: 14px; text-decoration: none;
+      padding: 14px 20px; border-radius: 100px; border: 0.5px solid var(--border);
       transition: color 0.2s, border-color 0.2s;
     }
+    .btn-ghost:hover { color: var(--green); border-color: var(--green-mid); }
+    .hero-note { font-size: 12px; color: var(--text-muted); margin-top: 16px; }
 
-    .btn-ghost:hover {
-      color: var(--green);
-      border-color: var(--green-mid);
+    /* SOCIAL PROOF */
+    .social-proof {
+      display: flex; align-items: center; justify-content: center; gap: 32px;
+      padding: 24px 40px; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
+      flex-wrap: wrap;
     }
+    .proof-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .proof-num { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--green); }
+    .proof-label { font-size: 13px; color: var(--text-muted); font-weight: 300; }
 
-    .hero-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 16px;
-    }
+    /* SECTIONS */
+    .section { padding: 96px 40px; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 500; color: var(--green); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+    h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .section-sub { font-size: 17px; color: var(--text-muted); font-weight: 300; max-width: 520px; line-height: 1.6; margin-bottom: 56px; }
 
     /* FEATURES */
-    .section {
-      padding: 96px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.1;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-    }
-
-    .section-sub {
-      font-size: 17px;
-      color: var(--text-muted);
-      font-weight: 300;
-      max-width: 520px;
-      line-height: 1.6;
-      margin-bottom: 56px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     .feature-card {
-      background: #fff;
-      border: 0.5px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
+      background: #fff; border: 0.5px solid var(--border); border-radius: 16px; padding: 28px;
       transition: border-color 0.2s, transform 0.2s;
     }
-
-    .feature-card:hover {
-      border-color: var(--green-mid);
-      transform: translateY(-2px);
-    }
-
-    .feature-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--green-light);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 16px;
-    }
-
-    .feature-title {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .feature-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    /* PRIVACY */
-    .privacy-section {
-      background: var(--green);
-      border-radius: 24px;
-      padding: 64px 56px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-      margin: 0 40px 96px;
-      max-width: 1020px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .privacy-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 3vw, 40px);
-      color: var(--green-light);
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .privacy-sub {
-      font-size: 16px;
-      color: rgba(225, 245, 238, 0.7);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    .privacy-items {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .privacy-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .privacy-check {
-      width: 22px;
-      height: 22px;
-      background: rgba(225, 245, 238, 0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 11px;
-      color: var(--green-mid);
-      margin-top: 1px;
-    }
-
-    .privacy-item-text {
-      font-size: 15px;
-      color: rgba(225, 245, 238, 0.85);
-      line-height: 1.5;
-      font-weight: 300;
-    }
-
-    .privacy-item-text strong {
-      color: var(--green-light);
-      font-weight: 500;
-    }
+    .feature-card:hover { border-color: var(--green-mid); transform: translateY(-2px); }
+    .feature-icon { width: 44px; height: 44px; background: var(--green-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+    .feature-title { font-size: 16px; font-weight: 500; margin-bottom: 8px; color: var(--text); }
+    .feature-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+    .feature-badge { display: inline-block; font-size: 11px; font-weight: 500; color: var(--green); background: var(--green-light); padding: 2px 8px; border-radius: 100px; margin-top: 10px; }
 
     /* HOW IT WORKS */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0;
-      position: relative;
-    }
-
-    .step {
-      padding: 32px 28px;
-      border-right: 0.5px solid var(--border);
-    }
-
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .step { padding: 32px 28px; border-right: 0.5px solid var(--border); }
     .step:last-child { border-right: none; }
+    .step-num { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--green-light); line-height: 1; margin-bottom: 12px; }
+    .step-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+    .step-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
 
-    .step-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 48px;
-      color: var(--green-light);
-      line-height: 1;
-      margin-bottom: 12px;
+    /* APP SECTION */
+    .app-section {
+      background: var(--green); border-radius: 24px; padding: 64px 56px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+      margin: 0 40px 96px; max-width: 1020px; margin-left: auto; margin-right: auto;
     }
+    .app-title { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3vw, 40px); color: var(--green-light); line-height: 1.1; margin-bottom: 16px; }
+    .app-sub { font-size: 16px; color: rgba(225, 245, 238, 0.7); line-height: 1.6; font-weight: 300; margin-bottom: 28px; }
+    .app-items { display: flex; flex-direction: column; gap: 16px; }
+    .app-item { display: flex; align-items: flex-start; gap: 12px; }
+    .app-check { width: 22px; height: 22px; background: rgba(225, 245, 238, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; color: var(--green-mid); margin-top: 1px; }
+    .app-item-text { font-size: 15px; color: rgba(225, 245, 238, 0.85); line-height: 1.5; font-weight: 300; }
+    .app-item-text strong { color: var(--green-light); font-weight: 500; }
+    .btn-light { display: inline-flex; align-items: center; gap: 8px; background: var(--green-light); color: var(--green-dark); font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 100px; text-decoration: none; transition: opacity 0.2s; }
+    .btn-light:hover { opacity: 0.9; }
 
-    .step-title {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 8px;
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .pricing-card {
+      background: #fff; border: 0.5px solid var(--border); border-radius: 20px; padding: 32px;
+      display: flex; flex-direction: column;
     }
-
-    .step-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-weight: 300;
+    .pricing-card.featured { border-color: var(--green); border-width: 1.5px; position: relative; }
+    .pricing-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--green); color: white; font-size: 11px; font-weight: 500;
+      padding: 4px 14px; border-radius: 100px; white-space: nowrap;
     }
+    .pricing-plan { font-size: 13px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .pricing-price { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--text); line-height: 1; margin-bottom: 4px; }
+    .pricing-price span { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--text-muted); font-weight: 300; }
+    .pricing-desc { font-size: 14px; color: var(--text-muted); font-weight: 300; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 0.5px solid var(--border); }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; flex: 1; }
+    .pricing-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); line-height: 1.4; }
+    .pricing-features li::before { content: '✓'; color: var(--green); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+    .pricing-features li.muted { color: var(--text-muted); }
+    .pricing-features li.muted::before { content: '—'; color: var(--border); }
+    .pricing-cta { display: block; text-align: center; padding: 12px; border-radius: 12px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+    .pricing-cta.primary { background: var(--green); color: var(--green-light); }
+    .pricing-cta.primary:hover { background: var(--green-dark); }
+    .pricing-cta.secondary { border: 0.5px solid var(--border); color: var(--text-muted); }
+    .pricing-cta.secondary:hover { border-color: var(--green); color: var(--green); }
 
     /* CTA FINAL */
-    .cta-section {
-      text-align: center;
-      padding: 96px 40px;
-      border-top: 0.5px solid var(--border);
-    }
-
+    .cta-section { text-align: center; padding: 96px 40px; border-top: 0.5px solid var(--border); }
     .cta-section h2 { margin-bottom: 12px; }
-
-    .cta-section p {
-      font-size: 17px;
-      color: var(--text-muted);
-      font-weight: 300;
-      margin-bottom: 36px;
-    }
+    .cta-section p { font-size: 17px; color: var(--text-muted); font-weight: 300; margin-bottom: 36px; }
 
     /* FOOTER */
     footer {
-      border-top: 0.5px solid var(--border);
-      padding: 32px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 13px;
-      color: var(--text-muted);
-      flex-wrap: wrap;
-      gap: 12px;
+      border-top: 0.5px solid var(--border); padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 13px; color: var(--text-muted); flex-wrap: wrap; gap: 12px;
     }
-
-    footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--green); }
-
     .footer-links { display: flex; gap: 24px; }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
+      .nav-links { display: none; }
       .hero { padding: 100px 20px 60px; }
       .section { padding: 64px 20px; }
-      .privacy-section {
-        grid-template-columns: 1fr;
-        padding: 40px 28px;
-        margin: 0 20px 64px;
-      }
+      .app-section { grid-template-columns: 1fr; padding: 40px 28px; margin: 0 20px 64px; }
       .step { border-right: none; border-bottom: 0.5px solid var(--border); }
       .step:last-child { border-bottom: none; }
       footer { padding: 24px 20px; }
       .footer-links { flex-direction: column; gap: 12px; }
+      .social-proof { gap: 20px; }
     }
 
-    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    .hero > * {
-      animation: fadeUp 0.6s ease both;
-    }
-
+    .hero > * { animation: fadeUp 0.6s ease both; }
     .hero-badge { animation-delay: 0.1s; }
     h1 { animation-delay: 0.2s; }
     .hero-sub { animation-delay: 0.3s; }
@@ -458,133 +218,244 @@
       <div class="nav-logo-icon">🌿</div>
       <span class="nav-logo-name">TricoHub</span>
     </a>
-    <a href="https://tricohub.com.br/privacidade" class="nav-link">Privacidade</a>
+    <div class="nav-links">
+      <a href="#funcionalidades" class="nav-link">Funcionalidades</a>
+      <a href="#como-funciona" class="nav-link">Como funciona</a>
+      <a href="#precos" class="nav-link">Preços</a>
+      <a href="https://portal.tricohub.com.br" class="nav-link">Portal</a>
+    </div>
+    <a href="https://portal.tricohub.com.br/cadastro" class="nav-cta">Começar grátis</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div>
       <div class="hero-badge">
-        🌱 <span>Disponível para Android</span>
+        🌱 <span>Portal web + App para pacientes</span>
       </div>
-      <h1>Cuide do seu cabelo com <em>dados reais</em></h1>
+      <h1>A plataforma completa para <em>tricologistas</em></h1>
       <p class="hero-sub">
-        Registre a queda, organize sua rotina e acompanhe sua evolução capilar. Simples, clínico e privado.
+        Gerencie pacientes, agenda e tratamentos. Seus pacientes acompanham a evolução pelo app. Tudo integrado.
       </p>
       <div class="hero-cta">
-        <a href="https://play.google.com/store" class="btn-primary">
-          ↓ Baixar para Android
+        <a href="https://portal.tricohub.com.br/cadastro" class="btn-primary">
+          Começar gratuitamente →
         </a>
-        <a href="#funcionalidades" class="btn-ghost">
-          Ver funcionalidades
+        <a href="https://portal.tricohub.com.br" class="btn-ghost">
+          Acessar o portal
         </a>
       </div>
-      <p class="hero-note">Gratuito · Seus dados ficam no seu dispositivo</p>
+      <p class="hero-note">Grátis para até 5 pacientes · Sem cartão de crédito</p>
     </div>
   </section>
+
+  <!-- SOCIAL PROOF -->
+  <div class="social-proof">
+    <div class="proof-item">
+      <span class="proof-num">100%</span>
+      <span class="proof-label">Focado em tricologia</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-num">LGPD</span>
+      <span class="proof-label">Dados protegidos</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-num">iOS + Android</span>
+      <span class="proof-label">App para pacientes</span>
+    </div>
+    <div class="proof-item">
+      <span class="proof-num">2FA</span>
+      <span class="proof-label">Segurança avançada</span>
+    </div>
+  </div>
 
   <!-- FEATURES -->
   <section class="section" id="funcionalidades">
     <p class="section-label">Funcionalidades</p>
-    <h2>Tudo que você precisa para acompanhar sua saúde capilar</h2>
-    <p class="section-sub">Do registro diário ao relatório para o seu profissional — tudo em um só lugar.</p>
+    <h2>Tudo que sua clínica precisa em um só lugar</h2>
+    <p class="section-sub">Do cadastro do paciente ao acompanhamento da evolução — sem planilhas, sem papel.</p>
 
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <p class="feature-title">Contagem de queda diária</p>
-        <p class="feature-desc">Registre os fios após o banho ou escovação. Veja tendências em 7, 14 ou 30 dias e identifique padrões.</p>
+        <div class="feature-icon">👤</div>
+        <p class="feature-title">Gestão de pacientes</p>
+        <p class="feature-desc">Cadastre pacientes manualmente ou convide pelo e-mail. Ficha clínica completa com alergias, medicações e histórico.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🧴</div>
-        <p class="feature-title">Rotina capilar organizada</p>
-        <p class="feature-desc">Cadastre produtos, defina frequência e horário de uso. Marque o que fez no dia e acompanhe sua adesão.</p>
+        <div class="feature-icon">📅</div>
+        <p class="feature-title">Agenda de consultas</p>
+        <p class="feature-desc">Calendário semanal e mensal. Pacientes confirmam presença pelo app. Lembretes automáticos.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📋</div>
-        <p class="feature-title">Relatório em PDF</p>
-        <p class="feature-desc">Gere um relatório completo com histórico, produtos e correlações. Compartilhe com seu profissional de saúde.</p>
+        <p class="feature-title">Planos de tratamento</p>
+        <p class="feature-desc">Crie protocolos personalizados com produtos recomendados. Templates reutilizáveis para agilizar o atendimento.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">✍️</div>
-        <p class="feature-title">Anotações diárias</p>
-        <p class="feature-desc">Registre observações livres — estresse, mudanças hormonais, novos produtos. Contexto que faz diferença.</p>
+        <div class="feature-icon">📷</div>
+        <p class="feature-title">Registros fotográficos</p>
+        <p class="feature-desc">Upload de fotos por atendimento com categorias. Comparativo lado a lado para visualizar a evolução.</p>
+        <span class="feature-badge">Plano Profissional</span>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🔔</div>
-        <p class="feature-title">Alertas personalizados</p>
-        <p class="feature-desc">Lembretes nos horários que você escolhe, com o tom que prefere — gentil, direto ou motivador.</p>
+        <div class="feature-icon">📊</div>
+        <p class="feature-title">Evolução clínica</p>
+        <p class="feature-desc">Gráfico de queda ao longo do tempo com marcos de tratamento. Tendência automática de melhora ou piora.</p>
+        <span class="feature-badge">Plano Profissional</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔬</div>
+        <p class="feature-title">Biblioteca científica</p>
+        <p class="feature-desc">Pesquise artigos no PubMed, SciELO e Semantic Scholar. Resumo automático em português com IA.</p>
+        <span class="feature-badge">Plano Profissional</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <p class="feature-title">Receituários digitais</p>
+        <p class="feature-desc">Emita receituários de produtos e suplementos. Imprima ou envie por e-mail diretamente para o paciente.</p>
+        <span class="feature-badge">Plano Profissional</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
-        <p class="feature-title">PIN e biometria</p>
-        <p class="feature-desc">Proteja seus dados com PIN de 4 dígitos ou biometria. Bloqueio automático após inatividade.</p>
+        <p class="feature-title">Segurança e LGPD</p>
+        <p class="feature-desc">Autenticação em dois fatores, log de auditoria completo, consentimento LGPD e dados criptografados.</p>
       </div>
     </div>
   </section>
 
-  <!-- PRIVACY -->
-  <div class="privacy-section">
-    <div>
-      <p class="privacy-title">Seus dados são<br><em style="font-style:italic; color: #9FE1CB;">exclusivamente seus</em></p>
-      <p class="privacy-sub">No TricoHub, nenhuma informação sua sai do seu dispositivo. Sem servidores, sem coleta, sem anúncios.</p>
-    </div>
-    <div class="privacy-items">
-      <div class="privacy-item">
-        <div class="privacy-check">✓</div>
-        <p class="privacy-item-text"><strong>100% offline</strong> — funciona sem internet</p>
-      </div>
-      <div class="privacy-item">
-        <div class="privacy-check">✓</div>
-        <p class="privacy-item-text"><strong>Sem servidores externos</strong> — seus dados nunca saem do aparelho</p>
-      </div>
-      <div class="privacy-item">
-        <div class="privacy-check">✓</div>
-        <p class="privacy-item-text"><strong>Sem anúncios</strong> — nenhum dado vendido a terceiros</p>
-      </div>
-      <div class="privacy-item">
-        <div class="privacy-check">✓</div>
-        <p class="privacy-item-text"><strong>Você controla tudo</strong> — exporte ou apague quando quiser</p>
-      </div>
-    </div>
-  </div>
-
   <!-- HOW IT WORKS -->
-  <section class="section">
+  <section class="section" id="como-funciona">
     <p class="section-label">Como funciona</p>
-    <h2>Simples de usar, poderoso na clínica</h2>
-    <p class="section-sub">Em poucos passos você começa a ter dados reais sobre sua saúde capilar.</p>
+    <h2>Do cadastro ao acompanhamento em minutos</h2>
+    <p class="section-sub">Configure sua clínica digital e comece a atender com mais inteligência.</p>
 
     <div class="steps">
       <div class="step">
         <p class="step-num">01</p>
-        <p class="step-title">Configure sua rotina</p>
-        <p class="step-desc">Adicione seus produtos capilares com frequência e horário de uso recomendados.</p>
+        <p class="step-title">Crie sua conta</p>
+        <p class="step-desc">Cadastre-se gratuitamente. Aprovação rápida pela nossa equipe.</p>
       </div>
       <div class="step">
         <p class="step-num">02</p>
-        <p class="step-title">Registre diariamente</p>
-        <p class="step-desc">Conte os fios após o banho e marque o que usou. Leva menos de 1 minuto.</p>
+        <p class="step-title">Cadastre seus pacientes</p>
+        <p class="step-desc">Importe manualmente ou convide pelo e-mail para sincronizar com o app.</p>
       </div>
       <div class="step">
         <p class="step-num">03</p>
-        <p class="step-title">Acompanhe sua evolução</p>
-        <p class="step-desc">Veja gráficos, tendências e correlações entre sua rotina e a queda.</p>
+        <p class="step-title">Crie planos e agenda</p>
+        <p class="step-desc">Monte protocolos de tratamento e organize sua agenda de consultas.</p>
       </div>
       <div class="step">
         <p class="step-num">04</p>
-        <p class="step-title">Compartilhe com seu profissional</p>
-        <p class="step-desc">Exporte um relatório em PDF completo para levar na sua próxima consulta.</p>
+        <p class="step-title">Acompanhe a evolução</p>
+        <p class="step-desc">Visualize gráficos, compare fotos e veja o progresso de cada paciente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <div class="app-section">
+    <div>
+      <p class="app-title">Seus pacientes também <em style="font-style:italic; color:#9FE1CB;">evoluem junto</em></p>
+      <p class="app-sub">Com o plano Profissional, seus pacientes têm acesso ao app TricoHub para acompanhar a evolução capilar, ver o plano de tratamento e confirmar consultas.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.tricohub.app" class="btn-light">
+        ↓ App para Android
+      </a>
+    </div>
+    <div class="app-items">
+      <div class="app-item">
+        <div class="app-check">✓</div>
+        <p class="app-item-text"><strong>Contagem de queda diária</strong> com gráficos e tendências</p>
+      </div>
+      <div class="app-item">
+        <div class="app-check">✓</div>
+        <p class="app-item-text"><strong>Rotina capilar</strong> com lembretes personalizados</p>
+      </div>
+      <div class="app-item">
+        <div class="app-check">✓</div>
+        <p class="app-item-text"><strong>Plano de tratamento</strong> visível diretamente no app</p>
+      </div>
+      <div class="app-item">
+        <div class="app-check">✓</div>
+        <p class="app-item-text"><strong>Confirmação de consultas</strong> com um toque</p>
+      </div>
+      <div class="app-item">
+        <div class="app-check">✓</div>
+        <p class="app-item-text"><strong>Dados sincronizados</strong> em tempo real com o portal</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <section class="section" id="precos">
+    <p class="section-label">Preços</p>
+    <h2>Simples e transparente</h2>
+    <p class="section-sub">Comece grátis e evolua conforme sua clínica cresce.</p>
+
+    <div class="pricing-grid">
+      <!-- FREE -->
+      <div class="pricing-card">
+        <p class="pricing-plan">Free</p>
+        <p class="pricing-price">R$0 <span>/mês</span></p>
+        <p class="pricing-desc">Para conhecer a plataforma e começar a organizar sua clínica.</p>
+        <ul class="pricing-features">
+          <li>Até 5 pacientes ativos</li>
+          <li>Ficha clínica básica</li>
+          <li>1 plano de tratamento por paciente</li>
+          <li>Agenda de consultas</li>
+          <li>10 fotos por paciente</li>
+          <li>1 receituário por paciente</li>
+          <li class="muted">App para pacientes</li>
+          <li class="muted">Evolução clínica</li>
+          <li class="muted">Biblioteca científica</li>
+        </ul>
+        <a href="https://portal.tricohub.com.br/cadastro" class="pricing-cta secondary">Começar grátis</a>
+      </div>
+
+      <!-- PROFISSIONAL -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Mais popular</div>
+        <p class="pricing-plan">Profissional</p>
+        <p class="pricing-price">R$49 <span>/mês</span></p>
+        <p class="pricing-desc">Para tricologistas que querem oferecer o melhor acompanhamento.</p>
+        <ul class="pricing-features">
+          <li>Pacientes ilimitados</li>
+          <li>Ficha clínica completa</li>
+          <li>Planos ilimitados + templates</li>
+          <li>Agenda completa com lembretes</li>
+          <li>Fotos ilimitadas + comparativo</li>
+          <li>Receituários ilimitados + e-mail</li>
+          <li>App para pacientes com sync</li>
+          <li>Evolução clínica com gráficos</li>
+          <li>Biblioteca científica + resumo IA</li>
+        </ul>
+        <a href="https://portal.tricohub.com.br/cadastro" class="pricing-cta primary">Começar agora →</a>
+      </div>
+
+      <!-- CLÍNICA -->
+      <div class="pricing-card">
+        <p class="pricing-plan">Clínica</p>
+        <p class="pricing-price">R$149 <span>/mês</span></p>
+        <p class="pricing-desc">Para clínicas com múltiplos profissionais e gestão centralizada.</p>
+        <ul class="pricing-features">
+          <li>Tudo do Profissional</li>
+          <li>Múltiplos profissionais</li>
+          <li>Dashboard da clínica</li>
+          <li>Relatórios avançados</li>
+          <li>Suporte prioritário</li>
+          <li>Onboarding dedicado</li>
+        </ul>
+        <a href="mailto:privacidade@tricohub.com.br" class="pricing-cta secondary">Falar com a equipe</a>
       </div>
     </div>
   </section>
 
   <!-- CTA FINAL -->
   <section class="cta-section">
-    <h2>Comece hoje, é gratuito</h2>
-    <p>Baixe o TricoHub e tenha dados reais sobre sua saúde capilar.</p>
-    <a href="https://play.google.com/store" class="btn-primary">
-      ↓ Baixar para Android
+    <h2>Pronto para modernizar sua clínica?</h2>
+    <p>Junte-se a tricologistas que já usam o TricoHub para oferecer um acompanhamento mais completo.</p>
+    <a href="https://portal.tricohub.com.br/cadastro" class="btn-primary">
+      Criar conta gratuita →
     </a>
   </section>
 
@@ -592,8 +463,9 @@
   <footer>
     <span>© 2026 TricoHub</span>
     <div class="footer-links">
-      <a href="https://instagram.com/tricohubapp" target="_blank">Siga-nos no Instagram</a>
-      <a href="https://tricohub.com.br/privacidade">Política de privacidade</a>
+      <a href="https://portal.tricohub.com.br">Portal do Profissional</a>
+      <a href="https://instagram.com/tricohubapp" target="_blank">Instagram</a>
+      <a href="https://tricohub.com.br/privacidade">Privacidade</a>
       <a href="https://tricohub.com.br/termos">Termos de uso</a>
       <a href="mailto:privacidade@tricohub.com.br">Contato</a>
     </div>
@@ -601,3 +473,4 @@
 
 </body>
 </html>
+HTMLEOF
