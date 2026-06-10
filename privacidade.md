@@ -15,7 +15,7 @@ O TricoHub é um aplicativo de diário capilar pessoal desenvolvido para ajudar 
 O responsável pelo tratamento dos dados pessoais coletados pelo TricoHub é:
 
 **TricoHub**
-Contato: privacidade@tricohub.com.br
+Contato: contato@tricohub.com.br
 
 ---
 
@@ -108,7 +108,7 @@ Esta política pode ser atualizada periodicamente. Quando houver alterações re
 
 Se tiver dúvidas sobre esta Política de Privacidade ou sobre o tratamento dos seus dados, entre em contato:
 
-**E-mail:** privacidade@tricohub.com.br
+**E-mail:** contato@tricohub.com.br
 
 ---
 
