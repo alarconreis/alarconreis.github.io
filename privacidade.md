@@ -124,7 +124,7 @@ De acordo com a LGPD, você tem os seguintes direitos sobre seus dados pessoais:
 - **Revogação do consentimento:** desativar funcionalidades ou encerrar o vínculo com um profissional a qualquer momento.
 - **Informação sobre compartilhamento:** saber com quem seus dados são compartilhados.
 
-Para exercer direitos que não possam ser realizados diretamente no aplicativo, entre em contato pelo e-mail privacidade@tricohub.com.br.
+Para exercer direitos que não possam ser realizados diretamente no aplicativo, entre em contato pelo e-mail contato@tricohub.com.br.
 
 ---
 
