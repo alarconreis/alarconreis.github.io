@@ -18,11 +18,7 @@ O responsável pelo tratamento dos dados pessoais coletados pelo TricoHub é:
 
 **TricoHub**
 Contato: contato@tricohub.com.br
-<<<<<<< HEAD
 Encarregado de dados (DPO) / privacidade: contato@tricohub.com.br
-=======
-Privacidade: privacidade@tricohub.com.br
->>>>>>> e31d327 (docs: atualizar politica de privacidade (reflete sync, fotos e compartilhamento com profissional))
 
 ---
 
@@ -128,11 +124,7 @@ De acordo com a LGPD, você tem os seguintes direitos sobre seus dados pessoais:
 - **Revogação do consentimento:** desativar funcionalidades ou encerrar o vínculo com um profissional a qualquer momento.
 - **Informação sobre compartilhamento:** saber com quem seus dados são compartilhados.
 
-<<<<<<< HEAD
 Para exercer direitos que não possam ser realizados diretamente no aplicativo, entre em contato pelo e-mail contato@tricohub.com.br.
-=======
-Para exercer direitos que não possam ser realizados diretamente no aplicativo, entre em contato pelo e-mail privacidade@tricohub.com.br.
->>>>>>> e31d327 (docs: atualizar politica de privacidade (reflete sync, fotos e compartilhamento com profissional))
 
 ---
 
@@ -148,11 +140,7 @@ O tratamento dos dados pessoais pelo TricoHub baseia-se nas seguintes hipóteses
 
 ## 12. Dados de crianças e adolescentes
 
-<<<<<<< HEAD
 O TricoHub é destinado a maiores de 18 anos e não é direcionado a menores. Não coletamos intencionalmente dados de menores. Se você acredita que um menor forneceu dados ao aplicativo, entre em contato pelo e-mail contato@tricohub.com.br para que possamos removê-los.
-=======
-O TricoHub é destinado a maiores de 18 anos e não é direcionado a menores. Não coletamos intencionalmente dados de menores. Se você acredita que um menor forneceu dados ao aplicativo, entre em contato pelo e-mail privacidade@tricohub.com.br para que possamos removê-los.
->>>>>>> e31d327 (docs: atualizar politica de privacidade (reflete sync, fotos e compartilhamento com profissional))
 
 ---
 
@@ -167,11 +155,7 @@ Esta política pode ser atualizada periodicamente. Quando houver alterações re
 Dúvidas sobre esta Política de Privacidade ou sobre o tratamento dos seus dados:
 
 **E-mail:** contato@tricohub.com.br
-<<<<<<< HEAD
 **Privacidade / DPO:** contato@tricohub.com.br
-=======
-**Privacidade:** privacidade@tricohub.com.br
->>>>>>> e31d327 (docs: atualizar politica de privacidade (reflete sync, fotos e compartilhamento com profissional))
 
 ---
 
